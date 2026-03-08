@@ -1,0 +1,51 @@
+{
+  "DOCTYPE": "PROP_SHEET",
+  "props": [
+    {
+      "name": "signMultibakery",
+      "size": {
+        "x": 32,
+        "y": 8,
+        "z": 48
+      },
+      "collType": "NONE",
+      "anims": {
+        "namedSheets": {
+          "signs": {
+            "src": "media/entity/objects/multibakery-props.png",
+	        "width": 32,
+	        "height": 48,
+	        "offX": 0,
+	        "offY": 0
+          }
+        },
+        "shapeType": "Y_FLAT",
+        "sheet": "signs",
+        "frames": [
+          0
+        ],
+        "SUB": [
+          {
+            "framesAlpha": [
+              0.5
+            ],
+            "SUB": [
+              {
+                "name": "default"
+              }
+            ]
+          },
+          {
+            "renderMode": "lighter",
+            "SUB": [
+              {
+                "name": "default",
+                "tileOffset": 1
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

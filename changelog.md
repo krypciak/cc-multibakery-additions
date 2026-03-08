@@ -1,3 +1,22 @@
+## 0.3.0 (03/07/2025)
+### General
+* Multibakery dependency version increased to 0.7.5
+### New Content
+* Added map multibakery/mba-outdoors
+* Added map multibakery/mba-south
+* Added "fishing" game test
+* Added replacement vanilla map autumn/path-7-1 that contains a west exit
+* Added a custom sign prop at \assets\data\props\multibakery.json
+* Added option to rename the MBA building using the sign to the left of the pvp room door in mba-lobby
+### Changes
+* Updated mba-lobby to use new 0.7.5 variables
+* Set "tmp.xpcDisableHoming" to true in event mapInitOnce on pvp map
+* Replaced s_startMultiPvp with a OneTimeSwitch that is closer to the dance floor and disappears during pvp duels in pvp map
+* Deleted prop palettes from mba-lobby and mba-testing
+* Added hitInvincible to all attacks in meat-saw enemy
+* Updated fall-detector event in mba-testing to use FOR_EACH_PLAYER
+* Updated playBattleMusic event in mba-pvp to use FOR_EACH_PLAYER
+
 ## 0.2.2 (01/24/2025)
 * Added map multibakery/mba-testing.json
 * Added super-meat mechanics, assets, files from Project Red to MBA testing room
