@@ -1,4 +1,30 @@
-## 0.3.0 (03/07/2025)
+## 0.3.1 (03/22/2026)
+### Issues
+- [0.3.1] Assertion error on pvp start
+  * https://github.com/XenonA7/cc-multibakery-additions/issues/1
+### General
+- Multibakery dependency version increased to 0.7.5
+### New Content
+- Added prestart.js
+- Added recolored tileset \assets\media\map\co-op-dungeon-outer.png
+- Added the co-op-outer map style
+- Added map co-op-dng/template
+- Added TeleportField to template from mba-outdoors
+- Defined new 48x48 DynamicPlatform stylekey dynPlatformLarge
+### Changes
+- Changed mba-outdoors to use co-op-dungeon-outer.png instead of final-dungeon-outer
+- Added AR_MSG when pvp cannot start due to insufficient parties
+  * Doesn't run FOR_EACH_PLAYER due to assertion error
+- All AR_MSG steps in mba-pvp map now execute via FOR_EACH_PLAYER
+- Set cameraInBounds to false for map mba-south
+- Added missing concrete floor details in mba-south
+- Darkened co-op dungeon entrance ground tiles
+### Fixes
+- Changed variable condition pvp.active to pvp.multiActive in mba-pvp
+- Fixed changelog dates
+- Changed "fishing" NPC reactType to FIXED_FACE in mba-outdoors
+
+## 0.3.0 (03/07/2026)
 ### General
 * Multibakery dependency version increased to 0.7.5
 ### New Content
@@ -17,18 +43,18 @@
 * Updated fall-detector event in mba-testing to use FOR_EACH_PLAYER
 * Updated playBattleMusic event in mba-pvp to use FOR_EACH_PLAYER
 
-## 0.2.2 (01/24/2025)
+## 0.2.2 (01/24/2026)
 * Added map multibakery/mba-testing.json
 * Added super-meat mechanics, assets, files from Project Red to MBA testing room
 * Added a prop to spawn bosses in MBA testing room
 * Added XPC character select sign (including Buggy) to mba-lobby with Alybox conditional patching
 * Fixed a typo in pvp map howToPlay text
 
-## 0.2.1 (01/21/2025)
+## 0.2.1 (01/21/2026)
 * Enabled outer barriers in pvp map when map.barrierConfig == 2 (due to switch)
 * Changed pvpBrake and pvpEnd from PARALLEL to CUTSCENE in pvp map
 
-## 0.2.0 (01/21/2025)
+## 0.2.0 (01/21/2026)
 * Created github repo: https://github.com/XenonA7/cc-multibakery-additions
 * Support for cc-multibakery 0.7.3
 * Stored old versions of map files in \assets\data\maps\multibakery\old-versions

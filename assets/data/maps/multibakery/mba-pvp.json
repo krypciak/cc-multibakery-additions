@@ -290,7 +290,7 @@
           },
           {
             "type": "IF",
-            "condition": "!pvp.active",
+            "condition": "!pvp.multiActive",
             "thenStep": [
               {
                 "type": "CHANGE_VAR_ARRAY",
@@ -337,6 +337,7 @@
                   {
                     "type": "IF",
                     "condition": "pvp.parties.length > 1",
+                    "withElse": true,
                     "thenStep": [
                       {
                         "type": "SHOW_INPUT_DIALOG",
@@ -397,6 +398,26 @@
                             "type": "CLEAR_MULTIPLAYER_PVP_PARTIES"
                           }
                         ]
+                      }
+                    ],
+                    "elseStep": [
+                      {
+                        "type": "SHOW_AR_MSG",
+                        "entity": {
+                          "global": true,
+                          "name": "s_startMultiPvp"
+                        },
+                        "text": {
+                          "en_US": "Not enough valid parties!",
+                          "de_DE": "",
+                          "ja_JP": "",
+                          "ko_KR": "",
+                          "zh_CN": "",
+                          "zh_TW": ""
+                        },
+                        "time": 2,
+                        "mode": "NO_LINE",
+                        "color": "RED"
                       }
                     ]
                   }
@@ -529,22 +550,30 @@
                 "value": 0
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[1]Silence\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[1]Silence\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "1": [
@@ -555,22 +584,30 @@
                 "value": 1
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Fierce Battle\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Fierce Battle\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "2": [
@@ -581,22 +618,30 @@
                 "value": 2
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Field Battle\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Field Battle\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "3": [
@@ -607,22 +652,30 @@
                 "value": 3
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Battle 3\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Battle 3\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "4": [
@@ -633,22 +686,30 @@
                 "value": 4
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Raid\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Raid\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "5": [
@@ -659,22 +720,30 @@
                 "value": 5
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Escape\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Escape\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "6": [
@@ -685,22 +754,30 @@
                 "value": 6
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Apollo\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Apollo\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "7": [
@@ -711,22 +788,30 @@
                 "value": 7
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Shizuka\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Shizuka\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "8": [
@@ -737,22 +822,30 @@
                 "value": 8
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Challenge 1\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Challenge 1\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "9": [
@@ -763,22 +856,30 @@
                 "value": 9
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Challenge 2\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Challenge 2\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "10": [
@@ -789,22 +890,30 @@
                 "value": 10
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Tutorial Battle\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Tutorial Battle\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "11": [
@@ -815,22 +924,30 @@
                 "value": 11
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Boss Battle\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Boss Battle\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "12": [
@@ -841,22 +958,30 @@
                 "value": 12
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Boss Rush\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Boss Rush\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "13": [
@@ -867,22 +992,30 @@
                 "value": 13
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]The Designer\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]The Designer\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "14": [
@@ -893,22 +1026,30 @@
                 "value": 14
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]The Creator\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]The Creator\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "15": [
@@ -919,22 +1060,30 @@
                 "value": 15
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Exponential\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Exponential\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "16": [
@@ -945,22 +1094,30 @@
                 "value": 16
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "bgmSignVanilla"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Set BGM: \\c[3]Di'orbis\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "bgmSignVanilla"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Set BGM: \\c[3]Di'orbis\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "type": "SHOW_CHOICE",
@@ -1933,22 +2090,30 @@
                 "value": 0
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "arenaConfigSign"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Fence config: \\c[3]Full arena\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "arenaConfigSign"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Fence config: \\c[3]Full arena\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "1": [
@@ -1959,22 +2124,30 @@
                 "value": 1
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "arenaConfigSign"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Fence config: \\c[3]Vanilla duel size - blue barriers\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "arenaConfigSign"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Fence config: \\c[3]Vanilla duel size - blue barriers\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "2": [
@@ -1985,22 +2158,30 @@
                 "value": 2
               },
               {
-                "type": "SHOW_AR_MSG",
-                "entity": {
-                  "global": true,
-                  "name": "arenaConfigSign"
+                "type": "FOR_EACH_PLAYER",
+                "players": {
+                  "varName": "game.entities.type.Player"
                 },
-                "text": {
-                  "en_US": "\\s[0]Fence config: \\c[3]Vanilla duel size - orange barriers\\c[0]",
-                  "de_DE": "",
-                  "ja_JP": "",
-                  "ko_KR": "",
-                  "zh_CN": "",
-                  "zh_TW": ""
-                },
-                "time": 1.5,
-                "color": "GREEN",
-                "mode": "NO_LINE"
+                "steps": [
+                  {
+                    "type": "SHOW_AR_MSG",
+                    "entity": {
+                      "global": true,
+                      "name": "arenaConfigSign"
+                    },
+                    "text": {
+                      "en_US": "\\s[0]Fence config: \\c[3]Vanilla duel size - orange barriers\\c[0]",
+                      "de_DE": "",
+                      "ja_JP": "",
+                      "ko_KR": "",
+                      "zh_CN": "",
+                      "zh_TW": ""
+                    },
+                    "time": 1.5,
+                    "color": "GREEN",
+                    "mode": "NO_LINE"
+                  }
+                ]
               }
             ],
             "3": [],

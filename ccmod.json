@@ -1,6 +1,6 @@
 {
 	"id": "cc-multibakery-additions",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"title": {
 		"en_US": "Multibakery Additions",
 		"de_DE": "Multibakery Additions",
@@ -25,8 +25,9 @@
 	"repository": "https://github.com/XenonA7/cc-multibakery-additions",
 	"tags": [],
 	"authors": ["XenonA7"],
+	"prestart": "prestart.js",
 	"dependencies": {
-		"cc-multibakery": ">=0.7.5",
+		"cc-multibakery": ">=0.7.6",
 		"cc-alybox": ">=1.1.0"
 	}
 }
