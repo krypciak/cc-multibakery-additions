@@ -63,7 +63,6 @@
                         "0": [
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": { "varName": "game.entities.type.Player" },
                                 "steps": [
                                     { "core": "EXP", "value": false, "type": "SET_PLAYER_CORE" },
                                     { "type": "SET_FORCE_COMBAT", "value": true },
@@ -72,12 +71,13 @@
                             },
                             { "type": "CHANGE_VAR_BOOL", "varName": "tmp.barrier", "changeType": "set", "value": true },
                             { "type": "CHANGE_VAR_NUMBER", "varName": "tmp.radfish.count", "changeType": "set", "value": 8 },
+                            { "type": "SET_VAR", "varName": "tmp.radfish.kills", "value": {} },
                             { "type": "CHANGE_VAR_NUMBER", "varName": "tmp.fightLevel", "changeType": "set", "value": { "varName": "player.level" } },
                             { "type": "CHANGE_VAR_NUMBER", "varName": "tmp.fightLevel", "changeType": "sub", "value": 4 },
                             {
                                 "type": "SPAWN_ENEMY_ON_ENTITY",
                                 "entity": { "global": true, "name": "center" },
-                                "enemyInfo": { "level": { "varName": "player.level" }, "party": "ENEMY", "face": "SOUTH", "type": "boss.radfish-spawner" }
+                                "enemyInfo": { "level": { "varName": "player.level" }, "party": "ENEMY", "face": "SOUTH", "type": "multibakery.radfish-spawner" }
                             },
                             { "type": "CHANGE_VAR_BOOL", "varName": "tmp.fishingActive", "changeType": "set", "value": true }
                         ],
@@ -105,9 +105,36 @@
                 "size": { "x": 16, "y": 16 },
                 "mapId": 83,
                 "event": [
-                    { "type": "ADD_TIMER", "name": "fishingTimer", "millis": false, "mode": "COUNTDOWN", "gui": true, "duration": 10, "temp": true, "assist": true },
-                    { "type": "WAIT", "ignoreSlowDown": true, "time": 10 },
-                    { "type": "REMOVE_TIMER", "name": "fishingTimer" },
+                    { "type": "CHANGE_VAR_NUMBER", "changeType": "set", "varName": "tmp.radfish.duration", "value": 10 },
+                    {
+                       "type": "FOR_EACH_PLAYER",
+                        "steps": [
+                            { "type": "ADD_TIMER", "name": "fishingTimer", "millis": false, "mode": "COUNTDOWN", "gui": true, "duration": { "varName": "tmp.radfish.duration" }, "temp": true, "assist": true },
+                            {
+                                "name": "points",
+                                "type": "ADD_GUI",
+                                "guiInfo": {
+                                    "type": "ScoreHud",
+                                    "settings": {
+                                        "taskTitle": { "en_US": "Your kills" },
+                                        "multiplier": 1,
+                                        "maxValue": 9999999,
+                                        "time": 0.2,
+                                        "useDots": true,
+                                        "variable": "tmp.radfish.kills[player.username].count"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    { "type": "WAIT", "ignoreSlowDown": true, "time": { "varName": "tmp.radfish.duration" } },
+                    {
+                       "type": "FOR_EACH_PLAYER",
+                        "steps": [
+                            { "type": "REMOVE_TIMER", "name": "fishingTimer" },
+                            { "name": "points", "type": "REMOVE_GUI" }
+                        ]
+                    },
                     { "type": "CHANGE_VAR_BOOL", "varName": "tmp.fishingActive", "changeType": "set", "value": false },
                     { "type": "CHANGE_VAR_BOOL", "varName": "tmp.fishingDone", "changeType": "set", "value": true }
                 ],
@@ -130,7 +157,6 @@
                     { "type": "REMOVE_PROXIES" },
                     {
                         "type": "FOR_EACH_PLAYER",
-                        "players": { "varName": "game.entities.type.Player" },
                         "steps": [
                             { "type": "SET_FORCE_COMBAT", "value": false },
                             { "type": "SET_COMBAT_ACTIVE", "active": false },
@@ -152,20 +178,28 @@
                     { "type": "CHANGE_VAR_BOOL", "varName": "tmp.fishingDone", "changeType": "set", "value": false },
                     { "type": "CHANGE_VAR_BOOL", "varName": "tmp.barrier", "changeType": "set", "value": false },
                     { "type": "CHANGE_VAR_NUMBER", "varName": "tmp.radfish.count", "changeType": "set", "value": 0 },
-                    { "type": "KILL_ENEMIES", "noRumble": true, "enemyType": "boss.radfish-spawner" },
-                    {
-                        "type": "FOR_EACH_PLAYER",
-                        "players": { "varName": "game.entities.type.Player" },
+                    { "type": "KILL_ENEMIES", "noRumble": true, "enemyType": "multibakery.radfish-spawner" },
+                    { "type": "CHANGE_VAR_STRING", "changeType": "set", "varName": "tmp.radfish.msg", "value": "Scoreboard:\n" },
+                    { "type": "FOR_EACH_PLAYER",
                         "steps": [
-                            { "type": "WAIT", "time": 1.5 },
-                            { "person": { "person": "misc.radical-fish", "expression": "DEFAULT" }, "type": "ADD_MSG_PERSON", "side": "LEFT" },
-                            { "person": { "person": "misc.radical-fish", "expression": "DEFAULT" }, "message": { "en_US": "Total fish kills: \\c[3]\\v[tmp.radfish.kill]\\c[0]" }, "type": "SHOW_MSG" },
-                            { "core": "EXP", "value": true, "type": "SET_PLAYER_CORE" },
-                            { "type": "CHANGE_VAR_NUMBER", "varName": "tmp.radfish.kill", "changeType": "set", "value": 0 }
+                            { "type": "CHANGE_VAR_STRING", "changeType": "append", "varName": "tmp.radfish.msg", "value": "- \\c[3]" },
+                            { "type": "CHANGE_VAR_STRING", "changeType": "append", "varName": "tmp.radfish.msg", "value": { "varName": "player.username" } },
+                            { "type": "CHANGE_VAR_STRING", "changeType": "append", "varName": "tmp.radfish.msg", "value": "\\c[0] has score: " },
+                            { "type": "CHANGE_VAR_STRING", "changeType": "append", "varName": "tmp.radfish.msg", "value": { "varName": "tmp.radfish.kills[player.username].count" } },
+                            { "type": "CHANGE_VAR_STRING", "changeType": "append", "varName": "tmp.radfish.msg", "value": ".\n" }
                         ]
                     },
+                    { "type": "WAIT", "time": 1.5 },
                     { "type": "KILL_ENEMIES", "noRumble": true, "enemyType": "boss.radfish" },
-                    { "type": "CLEAR_MSG", "side": "ALL" }
+                    {
+                        "type": "FOR_EACH_PLAYER",
+                        "steps": [
+                            { "person": { "person": "misc.radical-fish", "expression": "DEFAULT" }, "type": "ADD_MSG_PERSON", "side": "LEFT" },
+                            { "person": { "person": "misc.radical-fish", "expression": "DEFAULT" }, "message": { "en_US": "\\v[tmp.radfish.msg]" }, "type": "SHOW_MSG" },
+                            { "core": "EXP", "value": true, "type": "SET_PLAYER_CORE" },
+                            { "type": "CLEAR_MSG", "side": "ALL" }
+                        ]
+                    }
                 ],
                 "eventType": "CUTSCENE",
                 "name": "Fishing Done",

@@ -164,8 +164,13 @@
                 "mapId": 14,
                 "event": [
                     {
-                        "type": "PAUSE_BGM",
-                        "mode": "MEDIUM"
+                        "type": "FOR_EACH_PLAYER", 
+                        "steps": [
+                            {
+                                "type": "PAUSE_BGM",
+                                "mode": "MEDIUM"
+                            }
+                        ]
                     },
                     {
                         "type": "WAIT",
@@ -227,8 +232,13 @@
                         "type": "STOP_PVP_BATTLE"
                     },
                     {
-                        "type": "RESUME_DEFAULT_BGM",
-                        "mode": "SLOW"
+                        "type": "FOR_EACH_PLAYER",
+                        "steps": [
+                            {
+                                "type": "RESUME_DEFAULT_BGM",
+                                "mode": "SLOW"
+                            }
+                        ]
                     },
                     {
                         "type": "WAIT",
@@ -340,11 +350,13 @@
                                         "withElse": true,
                                         "thenStep": [
                                             {
-                                                "type": "SHOW_INPUT_DIALOG",
+                                                "type": "SHOW_OBJECT_SLIDER_DIALOG",
                                                 "title": "Win points",
                                                 "initialValue": 2,
                                                 "saveToVar": "tmp.pvpWinPoints",
-                                                "validRegex": "^(?:[1-9]|[1-5][0-9]|6[0-3])$",
+                                                "min": 1,
+                                                "max": 20,
+                                                "step": 1,
                                                 "accepted": [
                                                     {
                                                         "type": "MACRO",
@@ -551,9 +563,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -585,9 +594,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -619,9 +625,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -653,9 +656,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -687,9 +687,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -721,9 +718,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -755,9 +749,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -789,9 +780,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -823,9 +811,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -857,9 +842,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -891,9 +873,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -925,9 +904,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -959,9 +935,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -993,9 +966,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -1027,9 +997,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -1061,9 +1028,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -1095,9 +1059,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -1238,9 +1199,6 @@
                     },
                     {
                         "type": "FOR_EACH_PLAYER",
-                        "players": {
-                            "varName": "game.entities.type.Player"
-                        },
                         "steps": [
                             {
                                 "type": "IF",
@@ -2091,9 +2049,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -2125,9 +2080,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
@@ -2159,9 +2111,6 @@
                             },
                             {
                                 "type": "FOR_EACH_PLAYER",
-                                "players": {
-                                    "varName": "game.entities.type.Player"
-                                },
                                 "steps": [
                                     {
                                         "type": "SHOW_AR_MSG",
